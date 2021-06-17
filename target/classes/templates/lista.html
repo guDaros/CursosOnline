@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headCust">
+</head>
+<body>
+
+<div th:replace="base :: navlinks"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Cursos</h4>
+            <h2>Curso de Html</h2>
+            <br>
+            <p>Descrição:</p>
+            <p>Curso de HTML completo. (Básico ao Avançado)</p>
+            <br>
+            <br>
+            <br>
+            <a href="/detalhesCursoHtml">Detalhes</a>
+        </div>
+        <div class="col">
+            <img src="https://www.programaria.org/wp-content/uploads/2016/06/html.jpg" class="img-thumbnail">
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <div class="col">
+            <h>Curso de asp .net</h>
+            <br>
+            <p>Descrição:</p>
+            <p>Curso asp .net completo. (Básico ao Avançado)</p>
+            <br>
+            <br>
+            <br>
+            <a href="/detalhesCursoCSharp">Detalhes</a>
+        </div>
+
+        <div class="col">
+            <img src="https://videosdeti.com.br/wp-content/uploads/2019/01/scriptingCSharp.png" class="img-thumbnail">
+        </div>
+    </div>
+
+</div>
+<div th:replace="base :: footer"></div>
+
+</body>
+</html>

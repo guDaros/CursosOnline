@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headCust">
+</head>
+<body>
+
+<div th:replace="base :: navlinks"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>Curso de asp .NET</h4>
+      <br>
+      <p>Descrição:</p>
+      <p>Curso de asp .NET completo. (Básico ao Avançado)</p>
+      <br>
+      <br>
+      <p>R$ 150,00</p>
+      <form action="#" th:action="@{/savehtml}" th:object="${compra}" method="post">
+        <div class="col-md-3">
+          <input type="hidden" th:field="*{NomeCurso}" class="form-control">
+        </div>
+        <div class="col-md-3">
+
+          <input type="hidden" th:field="*{Detalhes}" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <input type="hidden" th:field="*{Valor}" class="form-control">
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-primary">
+      </form>
+    </div>
+    <div class="col">
+      <img src="https://videosdeti.com.br/wp-content/uploads/2019/01/scriptingCSharp.png" class="img-thumbnail">
+    </div>
+  </div>
+
+
+</div>
+<div th:replace="base :: footer"></div>
+
+</body>
+</html>
