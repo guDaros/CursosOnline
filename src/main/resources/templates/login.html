@@ -10,26 +10,27 @@
 <div th:if="${param.error}">
     Senha ou username invalido!
 </div>
-
 <div th:if="${param.logout}">
     Voce esta desconectado!
 </div>
+<div class="col-12" style="text-align: center">
+    <form th:action="@{/login}" method="post">
 
-<form th:action="@{/login}" method="post">
+        <div>
+            <label>Username: <input type="text" name="username"/></label>
+        </div>
 
-    <div>
-        <label>Username: <input type="text" name="username"/></label>
-    </div>
+        <div>
+            <label>Password: <input type="password" name="password"/></label>
+        </div>
 
-    <div>
-        <label>Password: <input type="password" name="password"/></label>
-    </div>
+        <div>
+            <input type="submit" value="Sign in">
+            <a class="btn btn-secundary" href="/cadastrar">Cadastre-se</a>
+        </div>
 
-    <div>
-        <input type="submit" value="Sign in">
-        <a class="btn btn-secundary" href="/cadastrar">Cadastre-se</a>
-    </div>
+    </form>
+</div>
 
-</form>
 </body>
 </html>
