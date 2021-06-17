@@ -7,6 +7,8 @@
 
 <body>
 <div th:replace="base :: navlinks"></div>
+<h4>Lista de compras</h4>
+
 <div th:each="compra : ${Compras}">
 
     <h4 th:inline="text"> [[${compra.NomeCurso}]], Descrição: [[${compra.Detalhes}]]</h4>

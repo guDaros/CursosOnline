@@ -6,33 +6,37 @@
 </head>
 
 <body>
+
 <div class="container-fluid">
     <div class="content-w">
         <div class="content-i">
-            <form action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
-                <div class="col-md-3">
-                    Nome
-                    <input type="text" th:field="*{name}" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    Sobrenome
-                    <input type="text" th:field="*{last_name}" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    username
-                    <input type="text" th:field="*{username}" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    email
-                    <input id="telefoneInput" type="text" th:field="*{email}" class="form-control">
+            <h1>aaaaaaaa</h1>
+            <div class="col-12" style="text-align:center">
+                <form action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
+                    <div class="col-md-3">
+                        Nome
+                        <input type="text" th:field="*{name}" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        Sobrenome
+                        <input type="text" th:field="*{last_name}" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        username
+                        <input type="text" th:field="*{username}" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        email
+                        <input id="telefoneInput" type="text" th:field="*{email}" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        Senha
+                        <input type="password" th:field="*{password}" class="form-control">
+                    </div>
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                </form>
+            </div>
 
-                </div>
-                <div class="col-md-3">
-                    Senha
-                    <input type="text" th:field="*{password}" class="form-control">
-                </div>
-                <input type="submit" value="Enviar" class="btn btn-primary">
-            </form>
         </div>
     </div>
 </div>
