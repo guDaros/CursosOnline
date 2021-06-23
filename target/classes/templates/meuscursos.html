@@ -9,11 +9,22 @@
 <div th:replace="base :: navlinks"></div>
 <h4>Lista de compras</h4>
 
-<div th:each="compra : ${Compras}">
-
-    <h4 th:inline="text"> [[${compra.NomeCurso}]], Descrição: [[${compra.Detalhes}]]</h4>
-    <p th:text="${compra.Valor}"></p>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nome do Curso</td>
+            <td>Detalhes</td>
+            <td>Valor</td>
+        </tr>
+    </thead>
+    <th:block th:each="compra : ${Compras}">
+        <tr>
+            <td th:text="${compra.NomeCurso}">...</td>
+            <td th:text="${compra.Detalhes}">...</td>
+            <td th:text="${compra.valor}">...</td>
+        </tr>
+    </th:block>
+</table>
 <div th:replace="base :: footer"></div>
 </body>
 </html>

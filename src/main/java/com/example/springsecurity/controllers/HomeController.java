@@ -1,13 +1,7 @@
 package com.example.springsecurity.controllers;
 
-import com.example.springsecurity.model.Compras;
-import com.example.springsecurity.model.ItensComprados;
-import com.example.springsecurity.model.Role;
-import com.example.springsecurity.model.User;
-import com.example.springsecurity.repository.ComprasRepository;
-import com.example.springsecurity.repository.ItemsRepository;
-import com.example.springsecurity.repository.RoleRepository;
-import com.example.springsecurity.repository.UserRepository;
+import com.example.springsecurity.model.*;
+import com.example.springsecurity.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +27,9 @@ public class HomeController {
 
     @Autowired
     ItemsRepository itemsRepository;
+
+    @Autowired
+    comunidadeRepository comunidadeRepository;
 
     @RequestMapping("/login")
     public String login(){
@@ -116,5 +113,18 @@ public class HomeController {
     public String saveCSharp(@Valid ItensComprados itensComprados){
         itemsRepository.save(itensComprados);
         return "redirect:/meuscursos";
+    }
+
+    @RequestMapping("/listaComunidade")
+    public String listaComunidade(Model model){
+        model.addAttribute("curso", new CursoComunidade());
+        model.addAttribute("cursoLista", comunidadeRepository.findAll());
+        return "listaComunidade";
+    }
+
+    @PostMapping("/salvarCurso")
+    public String salvarCurso(@Valid CursoComunidade curso){
+        comunidadeRepository.save(curso);
+        return "redirect:/listaComunidade";
     }
 }

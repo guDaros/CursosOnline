@@ -30,6 +30,8 @@ public class User {
 
     @Column(name = "username")
     private String username;
+    @Column(name = "moedaPagamento")
+    private String moedaPagamento;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
@@ -40,13 +42,14 @@ public class User {
 
     }
 
-    public User(String email, String password, String name, String last_name, boolean enabled, String username) {
+    public User(String email, String password, String name, String last_name, boolean enabled, String username, String moedaPagamento) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.last_name = last_name;
         this.enabled = enabled;
         this.username = username;
+        this.moedaPagamento = moedaPagamento;
     }
 
     public long getId() {
@@ -112,5 +115,13 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getMoedaPagamento() {
+        return moedaPagamento;
+    }
+
+    public void setMoedaPagamento(String moedaPagamento) {
+        this.moedaPagamento = moedaPagamento;
     }
 }
