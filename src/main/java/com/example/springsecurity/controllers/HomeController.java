@@ -5,12 +5,15 @@ import com.example.springsecurity.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 
 @Controller
@@ -89,6 +92,7 @@ public class HomeController {
     public String meuscusos(Model model)
     {
         model.addAttribute("Compras", itemsRepository.findAll());
+        model.addAttribute("senha", new Security());
         return "meuscursos";
     }
 
@@ -98,17 +102,20 @@ public class HomeController {
         model.addAttribute("compra", comprasRepository.findById(5L));
         return "detalhesCursoHtml";
     }
+
     @PostMapping("/savehtml")
     public String savehtml(@Valid ItensComprados itensComprados){
         itemsRepository.save(itensComprados);
         return "redirect:/meuscursos";
     }
+
     @RequestMapping("/detalhesCursoCSharp")
     public String detalhesCursoCSharp(Model model)
     {
         model.addAttribute("compra", comprasRepository.findById(6L));
         return "detalhesCursoCSharp";
     }
+
     @PostMapping("/saveCSharp")
     public String saveCSharp(@Valid ItensComprados itensComprados){
         itemsRepository.save(itensComprados);
@@ -126,5 +133,57 @@ public class HomeController {
     public String salvarCurso(@Valid CursoComunidade curso){
         comunidadeRepository.save(curso);
         return "redirect:/listaComunidade";
+    }
+
+    @GetMapping("/forgotPassword")
+    public String forgotPassword(Model model){
+        model.addAttribute("email", new User());
+
+        return "forgotPassword";
+    }
+
+    @Autowired
+    private EmailSenderService service;
+
+    @PostMapping("/sendEmail")
+    public String sendEmail(Mail mail){
+        User user = new User();
+        service.sendSimpleEmail(mail.getEmail(),
+                "Sua nova senha é '123'",
+                "Requisição de sua nova senha webCursos");
+
+        userRepository.findByEmail(mail.getEmail());
+        user.setId(4l);
+        user.setEnabled(true);
+        user.setLast_name("daros");
+        user.setMoedaPagamento("Real");
+        user.setName("gustavo");
+        user.setPassword("123");
+        user.setUsername("gustavo");
+        user.setEmail(mail.getEmail());
+
+        userRepository.save(user);
+
+        return "redirect:/login";
+    }
+
+    @PostMapping("/changeSenha")
+    public String changeSenha(@Valid Security security){
+
+        if (security.senha1 == security.senha2){
+
+            User user = new User();
+
+            user.setId(4l);
+            user.setEnabled(true);
+            user.setLast_name("daros");
+            user.setMoedaPagamento("Real");
+            user.setName("gustavo");
+            user.setPassword(security.senha1);
+            user.setUsername("gustavo");
+            user.setEmail("gustavo.daros16@gmail.com");
+            userRepository.save(user);
+        }
+        return "redirect:/meuscursos";
     }
 }

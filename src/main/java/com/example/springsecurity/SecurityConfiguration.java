@@ -40,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/h2-console/**").permitAll()
                 .antMatchers("/cadastrar").anonymous()
                 .antMatchers("/saveUser").anonymous()
+                .antMatchers("/sendEmail").anonymous()
+                .antMatchers("/forgotPassword").anonymous()
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
